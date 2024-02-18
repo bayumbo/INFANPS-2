@@ -9,4 +9,4 @@ router.get('/register', authController.showRegisterForm);
 router.post('/register', authController.signUp);
 router.get('/logout', authController.signOut);
 
-module.exports = router;
+module.exports = router; 

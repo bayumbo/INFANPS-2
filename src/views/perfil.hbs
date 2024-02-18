@@ -12,10 +12,10 @@
 <div class="container">
    <nav class="sidebar">
             <ul>
-                <li><a href="/profile">Perfil</a></li>
-                <li><a href="/settings">Configuración</a></li>
-                <li><a href="/logout">Cerrar Sesión</a></li>
-                <li><a href="/logout">Gestión Contenido</a></li>
+                <a href="/users/{{user.dataValues.id}}"><li>Perfil</li></a>
+                <a href="/users/{{user.dataValues.id}}/editar"><li>Configuración</li></a>
+                <a href="/logout"><li>Cerrar Sesión</li></a>
+                <a href="/logout"><li>Gestión Contenido</li></a>
             </ul>
         </nav>
      <div class="main-content">
@@ -29,7 +29,7 @@
         <!-- Puedes incluir más detalles del perfil aquí -->
     </div>
     </div>
-    <a href="/logout">Cerrar Sesión</a>
+    
 </div>
 </body>
 
@@ -48,7 +48,7 @@
 /* Estilos para el menú lateral */
 .sidebar {
     width: 200px; /* Ancho del menú lateral */
-    background-color: #333; /* Color de fondo del menú */
+    background-color: #017f9e; /* Color de fondo del menú */
     color: #fff; /* Color del texto */
     margin: -10px;
 }
@@ -62,13 +62,13 @@
     padding: 10px;
 }
 
-.sidebar ul li a {
+.sidebar ul a {
     color: #fff; /* Color del enlace */
     text-decoration: none; /* Quita el subrayado */
 }
 
 .sidebar ul li:hover {
-    background-color: #555; /* Color de fondo al pasar el ratón sobre el enlace */
+    background-color: #4866a7; /* Color de fondo al pasar el ratón sobre el enlace */
 }
 
 /* Estilos para el contenido principal */

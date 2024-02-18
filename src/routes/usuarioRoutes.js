@@ -5,7 +5,8 @@ const usuarioController = require('../controllers/usuarioController');
 // Rutas de usuarios
 
 router.get('/users/:id', usuarioController.obtenerUsuarioPorId);
-router.put('/users/:id', usuarioController.actualizarUsuario);
+router.get('/users/:id/editar', usuarioController.mostrarFormularioEdicion);
+router.post('/users/:id/editar', usuarioController.actualizarUsuario);
 router.delete('/users/:id', usuarioController.eliminarUsuario);
 
 module.exports = router;
