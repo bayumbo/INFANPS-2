@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <!-- Aquí puedes incluir tus estilos CSS -->
+</head>
+
+<body>
+    <h1>Perfil de Usuario</h1>
+    <div>
+        {{#each user}}
+        <p><strong>Nombre de Usuario:</strong> {{ user.username }}</p>
+        <p><strong>Nombre:</strong> {{ name }}</p>
+        <p><strong>Apellido:</strong> {{ lastName }}</p>
+        <p><strong>Correo Electrónico:</strong> {{ email }}</p>
+        <p><strong>Teléfono:</strong> {{ phone }}</p>
+        <!-- Puedes incluir más detalles del perfil aquí -->
+        {{/each}}
+    </div>
+    <a href="/logout">Cerrar Sesión</a>
+</body>
+
+</html>
