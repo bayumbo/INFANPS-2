@@ -9,16 +9,15 @@
 </head>
 
 <body>
+    
     <h1>Perfil de Usuario</h1>
     <div>
-        {{#each user}}
-        <p><strong>Nombre de Usuario:</strong> {{ user.username }}</p>
-        <p><strong>Nombre:</strong> {{ name }}</p>
-        <p><strong>Apellido:</strong> {{ lastName }}</p>
-        <p><strong>Correo Electrónico:</strong> {{ email }}</p>
-        <p><strong>Teléfono:</strong> {{ phone }}</p>
+        <p><strong>Nombre de Usuario:</strong> {{ user.dataValues.username }}</p>
+        <p><strong>Nombre:</strong> {{ user.dataValues.name }}</p>
+        <p><strong>Apellido:</strong> {{ user.dataValues.lastName }}</p>
+        <p><strong>Correo Electrónico:</strong> {{ user.dataValues.email }}</p>
+        <p><strong>Teléfono:</strong> {{ user.dataValues.phone }}</p>
         <!-- Puedes incluir más detalles del perfil aquí -->
-        {{/each}}
     </div>
     <a href="/logout">Cerrar Sesión</a>
 </body>

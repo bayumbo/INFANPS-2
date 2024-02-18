@@ -19,7 +19,7 @@ passport.use(
 
                 // Si no se encuentra ningún usuario, devuelve un mensaje de error
                 if (!existingUser) {
-                    return done(null, false, req.flash('message', 'El nombre de usuario no existe.'));
+                    return done(null, false, { message: 'El nombre de usuario no existe.' });
                 }
 
                 // Si el usuario existe, verifica la contraseña

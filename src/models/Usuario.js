@@ -1,8 +1,8 @@
 const { Sequelize, DataTypes } = require("sequelize")
-const sequelize = require('../Database/dataBase.orm');
+
 
 const usuario = (sequelize, DataTypes) => {
-    const Usuario = sequelize.define(
+    const usuario = sequelize.define(
         'Usuario', {
             id: {
                 type: DataTypes.INTEGER,
@@ -35,7 +35,7 @@ const usuario = (sequelize, DataTypes) => {
                 allowNull: false
             }
         })
-        return Usuario;
+        return usuario;
     };
 
 module.exports = usuario;

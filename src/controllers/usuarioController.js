@@ -4,11 +4,10 @@ const orm = require('../Database/dataBase.orm');
 const obtenerUsuarioPorId = async (req, res) => {
     const id = req.params.id;
     try {
-        const user = await orm.usuario.findAll();
+        const user = await orm.usuario.findByPk(id);
         if (!user) {
             return res.status(404).json({ mensaje: 'Usuario no encontrado' });
         }
-        // Renderizar el archivo HBS de perfil con los datos del usuario
         return res.render('perfil', { user });
     } catch (error) {
         console.error(error);

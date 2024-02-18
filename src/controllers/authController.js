@@ -6,11 +6,17 @@ const usuario = require('../Database/dataBase.orm');
 const authController = {};
 
 // Función para iniciar sesión
-authController.signIn = passport.authenticate('local.signin', {
-    successRedirect: '/users/{{id}}',
-    failureRedirect: '/login',
-    failureFlash: true
-});
+authController.signIn = (req, res, next) => {
+    passport.authenticate('local.signin', (err, user, info) => {
+        if (err) { return next(err); }
+        if (!user) { 
+            req.flash('message', info.message);
+            return res.redirect('/login');
+        }
+        // Redirige al usuario con su ID
+        res.redirect(`/users/${user.id}`);
+    })(req, res, next);
+};
 
 // Función para registrar un nuevo usuario
 authController.signUp = passport.authenticate('local.signup', {
@@ -21,8 +27,13 @@ authController.signUp = passport.authenticate('local.signup', {
 
 // Función para cerrar sesión
 authController.signOut = (req, res) => {
-    req.logout();
-    res.redirect('/');
+    req.logout(function(err) {
+        if (err) {
+            // Manejar el error si es necesario
+            console.error(err);
+        }
+        res.redirect('/login');
+    });
 };
 
 // Middleware para verificar si el usuario está autenticado

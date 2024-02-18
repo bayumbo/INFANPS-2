@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="/css/style.css"> <!-- Asegúrate de que la ruta sea correcta -->
+   
 </head>
 <body>
     <div class="container">
         <h2>Login</h2>
         {{#if message}}
-            <p class="message">{{message}}</p>
+        <div class="alert alert-danger" role="alert">
+        {{message}}
+        </div>
         {{/if}}
         <form action="/login" method="POST">
             <div class="form-group">
