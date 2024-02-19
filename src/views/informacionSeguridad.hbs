@@ -1,71 +1,203 @@
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Información de Seguridad</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Agrega el enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-    <!-- Formulario para agregar nueva información de seguridad -->
-   <h1>Crear Nueva Información de Seguridad</h1>
-   <div>
-     <form action="/informacion/crear" method="POST">
-        <label for="titulo">Título:</label>
-        <input type="text" id="titulo" name="titulo" required>
-        <br>
-        <label for="contenido">Contenido:</label>
-        <textarea id="contenido" name="contenido" rows="4" required></textarea>
-        <br>
-        <label for="multimedia">Multimedia:</label>
-        <input type="text" id="multimedia" name="multimedia">
-        <br>
-        <button type="submit">Crear Información de Seguridad</button>
-    </form>
-</div>
-    <div class="cuadro-independiente">
-<div class="container">
-        <h1>Información de Seguridad</h1>
-        {{#each informacionSeguridad}}
-        <div class="info-card">
-            <h2>{{this.dataValues.titulo}}</h2>
-            <p><strong>Contenido:</strong> {{this.dataValues.contenido}}</p>
-            <p><strong>Multimedia:</strong> {{this.dataValues.multimedia}}</p>
-             <a href="/informacion/{{ this.dataValues.id }}/editar"><button>Editar Información </button></a>
-          <form action="/informacion/eliminar/{{ this.dataValues.id }}" method="DELETE">
-            <button type="submit">Eliminar Información de Seguridad</button>
-        </form>
-        </div>
-        {{/each}}
-        
-    </div>
-    </div>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .info-card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            padding: 20px;
-        }
-        .info-card h2 {
-            margin-top: 0;
-        }
-        .info-card p {
-            margin: 10px 0;
-        }
-    </style>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Crear Nueva Información de Seguridad</h1>
+        <form action="/informacion/crear" method="POST">
+            <div class="form-group">
+                <label for="titulo" class="button-like">Título:</label>
+                <input type="text" class="form-control" id="titulo" name="titulo" required>
+
+            </div>
+            <div class="form-group">
+
+                <label for="contenido" class="button-like">Contenido:</label>
+                <textarea class="form-control" id="contenido" name="contenido" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+
+                <label for="multimedia" class="button-like">Multimedia:</label>
+                <input type="text" class="form-control" id="multimedia" name="multimedia">
+            </div>
+            <button type="submit" class="btn btn-primary">Crear Información de Seguridad</button>
+        </form>
+
+        <h1 class="mt-5"></h1>
+        <div class="card-container">
+            {{#each informacionSeguridad}}
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h2 class="card-title">{{this.dataValues.titulo}}</h2>
+                    <p class="card-text"><strong>Contenido:</strong> {{this.dataValues.contenido}}</p>
+                    <p class="card-text"><strong>Multimedia:</strong> {{this.dataValues.multimedia}}</p>
+                    <a href="/informacion/{{ this.dataValues.id }}/editar" class="btn btn-info">Editar Información</a>
+                    <form action="/informacion/eliminar/{{ this.dataValues.id }}" method="DELETE" class="d-inline">
+                        <button type="submit" class="btn btn-danger">Eliminar Información</button>
+                    </form>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+        <!-- Agrega el enlace a Bootstrap JS y Popper.js al final del cuerpo del documento para un mejor rendimiento -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+<style>
+    .card {
+        background: linear-gradient(to right, #94B8D0, #ffffff);/* Color de fondo de las tarjetas */
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        width: 400px; /* Ancho de la tarjeta */
+        margin: 10px; /* Márgenes entre las tarjetas */
+        border: 1px solid #ccc;/* Borde de la tarjeta */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);/* Sombra de la tarjeta */
+        transition: transform 0.3s ease-in-out; /* Transición de transformación */
+
+    }
+
+
+    /* Contenedor para las tarjetas */
+    .card-container {
+        display: flex; /* Utiliza flexbox */
+        flex-wrap: wrap; /* Envuelve hacia abajo cuando no hay espacio en la fila */
+        justify-content: space-around; /* Espacio entre las tarjetas */
+    }
+
+    .card:hover {
+        transform: scale(1.05);  /* Escala de la tarjeta al pasar el mouse sobre ella */
+    }
+
+    /* Resto de los estilos... */
+
+    /* Estilo para el label como botón 1  */
+    label.button-like {
+        display: inline-block;
+        padding: 5px 50px;
+        margin-bottom: 15px;
+        background: linear-gradient(to right, #97c1a9, #ffffff);/* Color de fondo del botón */
+        color: #000000; /* Color del texto del botón */
+        border: 1px solid #B7E0D2;/* Borde del botón */
+        border-radius: 5px;/* Bordes redondeados */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);/* Sombra */
+        cursor: pointer;/* Cambia el cursor al pasar sobre el botón */
+        transition: background-color 0.3s ease, color 0.3s ease;/* Transición de color de fondo y texto */
+
+    }
+
+    label.button-like:hover {
+        background: linear-gradient(to right, #d6eadf, #ffffff);/* Cambia el color de fondo al pasar el mouse sobre el botón */
+        border-color: #D6EADF;/* Cambia el color del borde al pasar el mouse sobre el botón */
+        color: #000000;/* Cambia el color del texto al pasar el mouse sobre el botón */
+    }
+
+    /* BORDES DE  CUADROS*/
+    #titulo,
+    #contenido,
+    #multimedia {
+        border: 1px solid #809CCE;/* Borde del elemento */
+        border-radius: 5px; /* Bordes redondeados */
+        padding: 10px; /* Relleno interno */
+        margin-bottom: 15px; /* Espaciado inferior */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+        transition: border-color 0.3s ease; /* Transición de color del borde */
+    }
+    #titulo:focus,
+    #contenido:focus,
+    #multimedia:focus {
+        border-color: #000000;/* Cambia el color del borde al enfocar el elemento */
+        background: linear-gradient(to right, #cfcfcf, #ffffff);
+    }
+
+    .form-control {
+        transition: border-color 0.3s ease;/* Transición de color del borde para elementos con la clase form-control */
+    }
+
+    h1.mb-4 {
+        color: #333; /* Color del texto */
+        font-size: 20px; /* Tamaño de la fuente */
+        text-align: center; /* Alineación del texto */
+        margin-bottom: 20px; /* Espaciado inferior */
+        padding-bottom: 10px; /* Espaciado inferior adicional */
+        transition: color 1.5s ease, transform 1.8s ease; /* Transición de color y transformación */
+        background: #8FC9CB;
+        border-radius: 15px;
+        padding: 10px;
+        width: 80%;
+        margin: 10;
+        position: relative;
+        left: 100px;
+    }
+    h1.mb-4:hover {
+        color: #fff;/* Cambia el color al pasar el mouse sobre el elemento */
+        transform: scale(1.1);/* Agranda el texto al pasar el mouse sobre el elemento */
+    }
+
+    /* Estilo para el h1 con clase mt-5 */
+    h1.mt-5 {
+        border-bottom: 2px solid #000000;/* Línea inferior */
+
+    }
+
+
+    body {
+        background-color: #97c1a9;/* Color de fondo de pantalla */
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        margin-top: 50px;
+        background-color: #fff;/* Color de fondo del contenedor */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .btn-primary {
+        background-color: #8FC9CB; /* Color del botón principal */
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #D4F0F1;/* Color al pasar el ratón sobre el botón */
+    }
+
+    .btn-info {
+        background-color: #17a2b8;/* Color del botón de información */
+        border: none;
+    }
+
+    .btn-info:hover {
+        background-color: #117a8b; /* Color al pasar el ratón sobre el botón de información */
+    }
+
+    .btn-danger {
+        background-color: #dc3545;/* Color del botón de peligro */
+        border: none;
+    }
+
+    .btn-danger:hover {
+        background-color: #ac2925; /* Color al pasar el ratón sobre el botón de peligro */
+    }
+</style>
