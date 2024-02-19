@@ -88,10 +88,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 const authRoutes = require('./routes/authRoutes');
 const usuarioRoutes = require('./routes/usuarioRoutes');
 const gestionContenidoRoutes = require('./routes/gestionContenidoRoutes');
+const informacionSeguridadRoutes = require('./routes/informacionSeguridadRoutes');
+
 // Rutas
 app.use(authRoutes);
 app.use(usuarioRoutes);
 app.use(gestionContenidoRoutes);
+app.use(informacionSeguridadRoutes);
 
 // Exportar la aplicación
 module.exports = app;
