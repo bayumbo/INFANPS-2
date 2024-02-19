@@ -1,15 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Contenido</title>
+   
+</head>
 <body>
     <h1>Gestión de Contenido</h1>
-    <div class="menu">
-        <div class="menu-item">
-            <a href="/informacion">Información</a>
+    <div class="cards-container">
+        <div class="card">
+            <h2>Información</h2>
+            <p>Administra la información del sitio.</p>
+            <a href="/informacion">Ir a Información</a>
         </div>
-        <div class="menu-item">
-            <a href="/foros">Foros</a>
+        <div class="card">
+            <h2>Foros</h2>
+            <p>Gestiona los foros de discusión.</p>
+            <a href="/foros">Ir a Foros</a>
         </div>
-        <div class="menu-item">
-            <a href="/actividades">Actividades</a>
+        <div class="card">
+            <h2>Actividades</h2>
+            <p>Administra las actividades disponibles.</p>
+            <a href="/actividades">Ir a Actividades</a>
         </div>
     </div>
 </body>
 </html>
+
+<style>
+    .cards-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    width: 30%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.card h2 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin-bottom: 15px;
+}
+
+.card a {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.card a:hover {
+    background-color: #0056b3;
+}
+</style>
