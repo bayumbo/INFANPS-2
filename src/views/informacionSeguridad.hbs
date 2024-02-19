@@ -30,9 +30,13 @@
             <h2>{{this.dataValues.titulo}}</h2>
             <p><strong>Contenido:</strong> {{this.dataValues.contenido}}</p>
             <p><strong>Multimedia:</strong> {{this.dataValues.multimedia}}</p>
-            <a href="/informacion/editar/{{ informacionSeguridad.dataValues.id }}">Editar</a>
+             <a href="/informacion/{{ this.dataValues.id }}/editar"><button>Editar Información </button></a>
+          <form action="/informacion/eliminar/{{ this.dataValues.id }}" method="DELETE">
+            <button type="submit">Eliminar Información de Seguridad</button>
+        </form>
         </div>
         {{/each}}
+        
     </div>
     </div>
 

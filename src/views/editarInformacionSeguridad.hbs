@@ -13,17 +13,14 @@
 
     <h1>EDITAR INFORMACIÓN DE SEGURIDAD</h1>
 
-    <form action="/informacion/editar/{{informacionSeguridad.dataValues.id}}" method="POST">
+        <form action="/informacion/{{ informacion.dataValues.id }}/editar" method="POST">
+        <input type="hidden" name="_method" value="PUT"> <!-- Para indicar que es una solicitud de actualización -->
         <label for="titulo">Título:</label>
-        <input type="text" name="titulo" value="{{informacionSeguridad.dataValues.titulo}}" required>
+        <input type="text" id="titulo" name="titulo" value="{{ informacion.dataValues.titulo }}">
         <label for="contenido">Contenido:</label>
-        <textarea name="contenido" required>{{informacionSeguridad.contenido}}</textarea>
-        <label for="multimedia">Multimedia</label>
-        <textarea name="multimedia">{{informacionSeguridad.comentario}}</textarea>
-        <label for="fecha_publicacion">Fecha de Publicación:</label>
-        <input type="datetime-local" name="fecha_publicacion" value="{{informacionSeguridad.fecha_publicacion}}" required>
-        <label for="id_autor">ID del Autor:</label>
-
-        <button type="submit">Actualizar Información de Seguridad</button>
-    </form>
+        <textarea id="contenido" name="contenido">{{ informacion.dataValues.contenido }}</textarea>
+        <label for="multimedia">Multimedia:</label>
+        <input type="text" id="multimedia" name="multimedia" value="{{ informacion.dataValues.multimedia }}">
+        <button type="submit">Guardar Cambios</button>
+        </form>
 </body>

@@ -45,6 +45,7 @@ const obtenerInformacionSeguridadPorId = async(req, res) => {
         if (!informacion) {
             return res.status(404).json({ mensaje: 'Usuario no encontrado' });
         }
+        console.log('Información de seguridad obtenida:', informacion);
         return res.render('editarInformacionSeguridad', { informacion});
         
     } catch (error) {
@@ -65,7 +66,7 @@ const actualizarInformacionSeguridad = async(req, res) => {
         // Actualizar los campos de la información de seguridad con los datos enviados en la solicitud
         await informacionSeguridad.update(req.body);
         // Redirigir a la página de información de seguridad después de la actualización
-        return res.redirect('/informacion-seguridad');
+        return res.redirect('/informacion');
     } catch (error) {
         console.error(error);
         return res.status(500).json({ mensaje: 'Error al actualizar la información de seguridad' });
@@ -80,7 +81,7 @@ const eliminarInformacionSeguridad = async(req, res) => {
             return res.status(404).json({ mensaje: 'Información de seguridad no encontrada' });
         }
 
-        return res.redirect('/informacion-seguridad');
+        return res.redirect('/informacion');
     } catch (error) {
         console.error(error);
         return res.status(500).json({ mensaje: 'Error al eliminar información de seguridad' });
