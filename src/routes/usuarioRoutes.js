@@ -9,4 +9,4 @@ router.get('/users/:id/editar', usuarioController.mostrarFormularioEdicion);
 router.post('/users/:id/editar', usuarioController.actualizarUsuario);
 router.delete('/users/:id', usuarioController.eliminarUsuario);
 
-module.exports = router;
+module.exports = router; 

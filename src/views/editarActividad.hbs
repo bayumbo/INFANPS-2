@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Actividad</title>
+
+    </style>
+</head>
+
+<body>
+
+    <h1>EDITAR ACTIVIDAD</h1>
+
+        <form action="/actividad/{{ actividad.dataValues.id }}/editar" method="POST">
+        <input type="hidden" name="_method" value="PUT"> <!-- Para indicar que es una solicitud de actualización -->
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" value="{{ actividad.dataValues.titulo }}">
+        <label for="descripcion">Contenido:</label>
+        <textarea id="descripcion" name="descripcion">{{ actividad.dataValues.descripcion }}</textarea>
+        <label for="multimedia">Multimedia:</label>
+        <input type="text" id="multimedia" name="multimedia" value="{{ actividad.dataValues.multimedia }}">
+        <button type="submit">Guardar Cambios</button>
+        </form>
+</body>

@@ -1,0 +1,71 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades Interactivas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+    <!-- Formulario para agregar nueva información de seguridad -->
+   <h1>Crear Nueva Actividad</h1>
+   <div>
+     <form action="/actividad/crear" method="POST">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required>
+        <br>
+        <label for="descripcion">Descripcion:</label>
+        <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+        <br>
+        <label for="multimedia">Multimedia:</label>
+        <input type="text" id="multimedia" name="multimedia">
+        <br>
+        <button type="submit">Crear Actividad</button>
+    </form>
+</div>
+    <div class="cuadro-independiente">
+<div class="container">
+        <h1>Actividades</h1>
+        {{#each actividad}}
+        <div class="info-card">
+            <h2>{{this.dataValues.titulo}}</h2>
+            <p><strong>Descripcion:</strong> {{this.dataValues.descripcion}}</p>
+            <p><strong>Multimedia:</strong> {{this.dataValues.multimedia}}</p>
+             <a href="/actividad/{{ this.dataValues.id }}/editar"><button>Editar Información </button></a>
+          <form action="/actividad/eliminar/{{ this.dataValues.id }}" method="DELETE">
+            <button type="submit">Eliminar Información de Seguridad</button>
+        </form>
+        </div>
+        {{/each}}
+        
+    </div>
+    </div>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .info-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .info-card h2 {
+            margin-top: 0;
+        }
+        .info-card p {
+            margin: 10px 0;
+        }
+    </style>

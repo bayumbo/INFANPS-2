@@ -3,20 +3,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Contenido</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Enlaza la biblioteca Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-    <div class="header-icons">
-        <a href="/users/{{user.dataValues.id}}"> <i class="fas fa-user" ></i></a> <!-- Icono de configuración en la esquina superior derecha -->
-        <a href="/logout"><i class="fas fa-door-open"></i></a> <!-- Icono de inicio en la esquina superior izquierda -->
-    </div>
     
-    <div class="cards-container">
-        <!-- Tarjetas de contenido aquí -->
-    </div>
+</head>
+    
+    
 
 <body>
+    <div class="header-icons">
+        <a href="/users/{{user.dataValues.id}}"> <i class="fas fa-user" ></i></a> 
+        <a href="/logout"><i class="fas fa-door-open"></i></a> 
+    </div>
     <h1>Gestión de Contenido</h1>
     <div class="cards-container">
         <div class="card">
@@ -32,7 +30,7 @@
         <div class="card">
             <h2>Actividades</h2>
             <p>Administra las actividades disponibles.</p>
-            <a href="/actividades">Ir a Actividades</a>
+            <a href="/actividad">Ir a Actividades</a>
         </div>
     </div>
 </body>
