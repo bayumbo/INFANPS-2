@@ -3,8 +3,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Contenido</title>
-   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Enlaza la biblioteca Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </head>
+<body>
+    <div class="header-icons">
+       <a href="/users/{{user.dataValues.id}}"> <i class="fas fa-user" ></i></a> <!-- Icono de configuración en la esquina superior derecha -->
+        <a href="/logout"><i class="fas fa-door-open"></i></a> <!-- Icono de inicio en la esquina superior izquierda -->
+    </div>
+    
+    <div class="cards-container">
+        <!-- Tarjetas de contenido aquí -->
+    </div>
+
 <body>
     <h1>Gestión de Contenido</h1>
     <div class="cards-container">
@@ -60,5 +71,17 @@
 
 .card a:hover {
     background-color: #0056b3;
+}
+.header-icons {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Asegura que los íconos estén por encima del contenido */
+}
+
+.header-icons i {
+    font-size: 24px;
+    margin: 0 10px;
+    cursor: pointer; /* Cambia el cursor al pasar sobre los íconos */
 }
 </style>
