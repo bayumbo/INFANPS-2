@@ -82,7 +82,7 @@ app.use((req, res, next) => {
 app.use(helmet());
 
 // Configurar archivos estáticos
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'uploads')));
 
 // Rutas - Definir tus rutas aquí
 const authRoutes = require('./routes/authRoutes');
@@ -96,6 +96,26 @@ app.use(usuarioRoutes);
 app.use(gestionContenidoRoutes);
 app.use(informacionSeguridadRoutes);
 app.use(actividadInteractivaRoutes);
+app.post("/upload", (req,res)=>{
+    try {
+        if (!req.files) {
+            res.status(400).json({message:"Seleccione un archivo"})
+        }
+        else {
+            let file = req.files.avatar
+            file.mv("./uploads/"+file.name)
+            res.status(200).json({message:"Archivo subido",
+            data:{
+                name: file.name,
+                size: file.size,
+                type: file.mimetype
+            }
+        })
 
+        }
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
 // Exportar la aplicación
 module.exports = app;
