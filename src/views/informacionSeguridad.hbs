@@ -14,22 +14,22 @@
 
 <body>
     <div class="container">
-       <h1 class="mb-4"><strong>CREAR NUEVA INFORMACION SEGURIDAD</strong></h1>
+       <h1 class="mb-4"><strong>CREAR NUEVA INFORMACIÓN SEGURIDAD</strong></h1>
 
         <form action="/informacion/crear" method="POST">
             <div class="form-group">
-                <label for="titulo" class="button-like"><strong>Título:</strong></label>
+                <label for="titulo" class="button-like" ><strong>Título:  <i class="bi bi-chat-left-text-fill"></i></i></strong></label>
                 <input type="text" class="form-control" id="titulo" name="titulo" required>
-
+  
             </div>
             <div class="form-group">
 
-                <label for="contenido" class="button-like"><strong>Contenido:</strong></label>
+                <label for="contenido" class="button-like"><strong>Contenido: <i class="bi bi-file-font-fill"></i> </strong></label>
                 <textarea class="form-control" id="contenido" name="contenido" rows="4" required></textarea>
             </div>
             <div class="form-group">
 
-                <label for="multimedia" class="button-like"><strong>Multimedia:</strong></label>
+                <label for="multimedia" class="button-like"><strong>Multimedia: <i class="bi bi-plus-circle-fill"></i></strong></label>
                 <input type="text" class="form-control" id="multimedia" name="multimedia">
             </div>
             <button type="submit" class="btn btn-primary"><strong>Crear Información de Seguridad</strong></button>
@@ -42,10 +42,11 @@
                 <div class="card-body">
                     <h2 class="card-title">{{this.dataValues.titulo}}</h2>
                     <p class="card-text"><strong>Contenido:</strong> {{this.dataValues.contenido}}</p>
-                    <p class="card-text"><strong>Multimedia:</strong> {{this.dataValues.multimedia}}</p>
-                    <a href="/informacion/{{ this.dataValues.id }}/editar" class="btn btn-info"><strong>Editar Información</strong></a>
+                   <p class="card-text"><strong>Multimedia:</strong> {{this.dataValues.multimedia}}</p>
+                    <a href="/informacion/{{ this.dataValues.id }}/editar" class="btn btn-info"><strong>Editar Información  <i class="bi bi-brush-fill"></i></i></strong></a>
+                
                     <form action="/informacion/eliminar/{{ this.dataValues.id }}" method="DELETE" class="d-inline">
-                        <button type="submit" class="btn btn-danger"><strong>Eliminar Información</strong></button>
+                        <button type="submit" class="btn btn-danger"><strong>Eliminar Información <i class="bi bi-trash-fill"></i></i></strong></button>
                     </form>
                 </div>
             </div>
@@ -60,6 +61,8 @@
 
 </html>
 <style>
+
+
     /* Contenedor para las tarjetas */
     .card-container {
         display: flex; /* Utiliza flexbox */
@@ -157,7 +160,7 @@
 
 
     body {
-        background-color: #e6f1eb;/* Color de fondo de pantalla */
+         background: #fff;
         margin: 0;
         padding: 0;
          font-family: Arial, sans-serif; /Estilo de letra/
@@ -188,6 +191,7 @@
     .btn-info {
         background-color: #8FC9CB;/* Color del botón de información */
         border: none;
+          font-size: 13px;
     }
 
     .btn-info:hover {
@@ -197,6 +201,7 @@
     .btn-danger {
         background-color: #b7cfb7;/* Color del botón de peligro */
         border: none;
+          font-size: 13px;
     }
 
     .btn-danger:hover {

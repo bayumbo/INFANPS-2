@@ -11,25 +11,25 @@
 
 <body class="container mt-5">
 
-    <h1 class="mb-4"><strong>EDITAR INFORMACIÓN DE SEGURIDAD</strong></h1>
+    <h1 class="mb-4"><strong>EDITAR INFORMACIÓN DE SEGURIDAD  <i class="bi bi-brush"></i></strong></h1>
 
     <form action="/informacion/{{ informacion.dataValues.id }}/editar" method="POST">
         <input type="hidden" name="_method" value="PUT">
         <div class="form-group">
 
             
-                <label for="titulo" class="button-like"><strong>Título:</strong></label>
+                <label for="titulo" class="button-like"><strong>Título:  <i class="bi bi-chat-left-text-fill"></i></strong></label>
             <input type="text" class="form-control" id="titulo" name="titulo" value="{{ informacion.dataValues.titulo }}">
         </div>
         <div class="form-group">
-         <label for="contenido" class="button-like"><strong>Contenido:</strong></label>
+         <label for="contenido" class="button-like"><strong>Contenido: <i class="bi bi-file-font-fill"></i></strong></label>
             <textarea class="form-control" id="contenido" name="contenido">{{ informacion.dataValues.contenido }}</textarea>
         </div>
         <div class="form-group">
-            <label for="multimedia" class="button-like"><strong>Multimedia:</strong></label>
+            <label for="multimedia" class="button-like"><strong>Multimedia: <i class="bi bi-plus-circle-fill"></i></strong></label>
             <input type="text" class="form-control" id="multimedia" name="multimedia" value="{{ informacion.dataValues.multimedia }}">
         </div>
-        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <button type="submit" class="btn btn-primary"><strong>Guardar Cambios</strong></button>
     </form>
              
     <!-- Agrega el script de Bootstrap (jQuery y Popper.js) al final del cuerpo del documento -->
@@ -104,9 +104,9 @@
     }
 
         body {
-            background-color: #f8f9fa; /* Color de fondo del cuerpo del documento */
+            background-color: #8FC9CB;
              font-family: Arial, sans-serif; /Estilo de letra/
-             color: #333;
+             color: #5333;
         }
 
         .container {
@@ -131,3 +131,5 @@
            background-color: #D4F0F1;/* Color al pasar el ratón sobre el botón */
         }
     </style>
+
+
