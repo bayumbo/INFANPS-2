@@ -1,5 +1,5 @@
 const orm = require('../Database/dataBase.orm');
-
+const { enviarCorreoNotificacion } = require('../controllers/notificacionesController');
 
 
 const obtenerActividad = async(req, res) => {
@@ -26,6 +26,26 @@ const crearActividad = async (req, res) => {
             UsuarioId,
             gestionContenidoId
         });
+                // Obtener todos los usuarios
+                const usuarios = await orm.usuario.findAll();
+        
+                // Asunto y mensaje de la notificación
+                const asunto = 'Nueva Actividad creada';
+                const mensaje = `Se ha creado una nueva Actividad: ${titulo}`;
+        
+                // Enviar notificación por correo a todos los usuarios
+                for (const usuario of usuarios) {
+                    const correoUsuario = usuario.email;
+        
+                    // Verificar si el usuario tiene un correo electrónico
+                    if (!correoUsuario) {
+                        console.error(`Usuario sin dirección de correo electrónico: ${usuario.id}`);
+                        continue;
+                    }
+        
+                    // Enviar correo electrónico
+                    await enviarCorreoNotificacion(correoUsuario, asunto, mensaje);
+                }
 
         // Devuelve una respuesta con el nuevo objeto creado
         return res.redirect('/actividad');
