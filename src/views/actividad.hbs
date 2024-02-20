@@ -6,6 +6,10 @@
     <title>Actividades Interactivas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+    <div class="header-icons">
+        <a href="/gestionContenido"> <i class="fas fa-user" ></i></a> 
+        <a href="/logout"><i class="fas fa-door-open"></i></a> 
+    </div>
     <!-- Formulario para agregar nueva información de seguridad -->
    <h1>Crear Nueva Actividad</h1>
    <div>
@@ -68,4 +72,17 @@
         .info-card p {
             margin: 10px 0;
         }
+        .header-icons {
+        position: fixed;
+        top: 20px;
+        right: 10px;
+        z-index: 1000; /* Asegura que los íconos estén por encima del contenido */
+        }
+
+        .header-icons i {
+        font-size: 24px;
+        margin: 0 10px;
+        cursor: pointer; /* Cambia el cursor al pasar sobre los íconos */
+        }
+
     </style>

@@ -13,6 +13,10 @@
 </head>
 
 <body>
+    <div class="header-icons">
+        <a href="/gestionContenido"> <i class="fas fa-user" ></i></a> 
+        <a href="/logout"><i class="fas fa-door-open"></i></a> 
+    </div>
     <div class="container">
        <h1 class="mb-4"><strong>CREAR NUEVA INFORMACIÓN SEGURIDAD</strong></h1>
 
@@ -206,5 +210,17 @@
 
     .btn-danger:hover {
         background-color: #D6EADF; /* Color al pasar el ratón sobre el botón de peligro */
+    }
+    .header-icons {
+    position: fixed;
+    top: 20px;
+    right: 10px;
+    z-index: 1000; /* Asegura que los íconos estén por encima del contenido */
+    }
+
+    .header-icons i {
+        font-size: 24px;
+        margin: 0 10px;
+        cursor: pointer; /* Cambia el cursor al pasar sobre los íconos */
     }
 </style>
