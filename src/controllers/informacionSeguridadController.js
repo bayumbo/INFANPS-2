@@ -16,8 +16,8 @@ const obtenerInformacionSeguridad = async(req, res) => {
 const crearInformacionSeguridad = async (req, res) => {
     try {
         // Extrae los datos del cuerpo de la solicitud
-        const { titulo, contenido, multimedia, UsuarioId, gestionContenidoId } = req.body;
-
+        const { titulo, contenido, UsuarioId, gestionContenidoId } = req.body;
+        const multimedia = req.file ? req.file.filename : null;
         // Crea una nueva instancia de información de seguridad con los datos proporcionados
         const nuevaInformacionSeguridad = await orm.InformacionSeguridad.create({
             titulo,

@@ -10,6 +10,7 @@ const MySQLStore = require('express-mysql-session')(session);
 const bodyparser = require('body-parser');
 const fileUpload = require("express-fileupload");
 const helmet = require('helmet');
+const multer  = require('multer');
 
 // Importar módulos locales
 const { MYSQLHOST, MYSQLUSER, MYSQLPASSWORD, MYSQLDATABASE, MYSQLPORT } = require("./keys");
@@ -17,6 +18,7 @@ require('./lib/passport');
 
 // Crear aplicación Express
 const app = express();
+const upload = multer({ dest: 'uploads/' });
 
 // Configurar almacenamiento de sesiones
 const options = {
@@ -45,6 +47,12 @@ app.engine('.hbs', handlebars.engine);
 app.set('view engine', '.hbs');
 
 // Configurar middleware
+app.use(upload.single('multimedia'));
+app.post('/upload', upload.single('multimedia'), (req, res) => {
+    // El archivo se encuentra en req.file
+    // Puedes procesarlo como desees, por ejemplo, guardarlo en la base de datos o en el sistema de archivos
+    res.send('Archivo subido exitosamente');
+  });
 app.use(fileUpload({ createParentPath: true }));
 app.use(morgan('dev'));
 app.use(bodyparser.urlencoded({ extended: false }));
@@ -96,26 +104,6 @@ app.use(usuarioRoutes);
 app.use(gestionContenidoRoutes);
 app.use(informacionSeguridadRoutes);
 app.use(actividadInteractivaRoutes);
-app.post("/upload", (req,res)=>{
-    try {
-        if (!req.files) {
-            res.status(400).json({message:"Seleccione un archivo"})
-        }
-        else {
-            let file = req.files.avatar
-            file.mv("./uploads/"+file.name)
-            res.status(200).json({message:"Archivo subido",
-            data:{
-                name: file.name,
-                size: file.size,
-                type: file.mimetype
-            }
-        })
 
-        }
-    } catch (error) {
-        res.status(500).json(error)
-    }
-})
 // Exportar la aplicación
 module.exports = app;
