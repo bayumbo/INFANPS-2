@@ -1,5 +1,5 @@
 const orm = require('../Database/dataBase.orm');
-
+const { enviarCorreoNotificacion } = require('../controllers/notificacionesController');
 
 
 const obtenerInformacionSeguridad = async(req, res) => {
@@ -16,16 +16,37 @@ const obtenerInformacionSeguridad = async(req, res) => {
 const crearInformacionSeguridad = async (req, res) => {
     try {
         // Extrae los datos del cuerpo de la solicitud
-        const { titulo, contenido, UsuarioId, gestionContenidoId } = req.body;
+        const { titulo, contenido, gestionContenidoId } = req.body;
         const multimedia = req.file ? req.file.filename : null;
+        
         // Crea una nueva instancia de información de seguridad con los datos proporcionados
         const nuevaInformacionSeguridad = await orm.InformacionSeguridad.create({
             titulo,
             contenido,
             multimedia,
-            UsuarioId,
             gestionContenidoId
         });
+        
+        // Obtener todos los usuarios
+        const usuarios = await orm.usuario.findAll();
+        
+        // Asunto y mensaje de la notificación
+        const asunto = 'Nueva información creada';
+        const mensaje = `Se ha creado una nueva información: ${titulo}`;
+
+        // Enviar notificación por correo a todos los usuarios
+        for (const usuario of usuarios) {
+            const correoUsuario = usuario.email;
+
+            // Verificar si el usuario tiene un correo electrónico
+            if (!correoUsuario) {
+                console.error(`Usuario sin dirección de correo electrónico: ${usuario.id}`);
+                continue;
+            }
+
+            // Enviar correo electrónico
+            await enviarCorreoNotificacion(correoUsuario, asunto, mensaje);
+        }
 
         // Devuelve una respuesta con el nuevo objeto creado
         return res.redirect('/informacion');
@@ -37,7 +58,6 @@ const crearInformacionSeguridad = async (req, res) => {
 };
 
 
-
 const obtenerInformacionSeguridadPorId = async(req, res) => {
     const id = req.params.id;
     try {
@@ -45,7 +65,7 @@ const obtenerInformacionSeguridadPorId = async(req, res) => {
         if (!informacion) {
             return res.status(404).json({ mensaje: 'Usuario no encontrado' });
         }
-        console.log('Información de seguridad obtenida:', informacion);
+
         return res.render('editarInformacionSeguridad', { informacion});
         
     } catch (error) {
