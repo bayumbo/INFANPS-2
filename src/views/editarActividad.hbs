@@ -10,7 +10,10 @@
 </head>
 
 <body>
-
+<div class="header-icons">
+        <a href="/actividad"> <i class="fa-solid fa-arrow-left"></i></a> 
+        <a href="/logout"><i class="fas fa-door-open"></i></a> 
+    </div>
     <h1>EDITAR ACTIVIDAD</h1>
 
         <form action="/actividad/{{ actividad.dataValues.id }}/editar" method="POST">
@@ -24,3 +27,18 @@
         <button type="submit">Guardar Cambios</button>
         </form>
 </body>
+
+<style>
+    .header-icons {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000; /* Asegura que los íconos estén por encima del contenido */
+    }
+
+    .header-icons i {
+        font-size: 24px;
+        margin: 0 10px;
+        cursor: pointer; /* Cambia el cursor al pasar sobre los íconos */
+    }
+</style>

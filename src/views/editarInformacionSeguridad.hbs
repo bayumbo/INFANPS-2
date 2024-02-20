@@ -8,7 +8,10 @@
     <!-- Agrega el enlace al archivo CSS de Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-
+<div class="header-icons">
+        <a href="/informacion"> <i class="fa-solid fa-arrow-left" ></i></a> 
+        <a href="/logout"><i class="fas fa-door-open"></i></a> 
+    </div>
 <body class="container mt-5">
 
     <h1 class="mb-4"><strong>EDITAR INFORMACIÓN DE SEGURIDAD  <i class="bi bi-brush"></i></strong></h1>
@@ -129,6 +132,18 @@
 
         button.btn-primary:hover {
            background-color: #D4F0F1;/* Color al pasar el ratón sobre el botón */
+        }
+        .header-icons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000; /* Asegura que los íconos estén por encima del contenido */
+        }
+
+        .header-icons i {
+            font-size: 24px;
+            margin: 0 10px;
+            cursor: pointer; /* Cambia el cursor al pasar sobre los íconos */
         }
     </style>
 
