@@ -14,24 +14,25 @@
 
 <body>
     <div class="container">
-        <h1 class="mb-4">Crear Nueva Información de Seguridad</h1>
+       <h1 class="mb-4"><strong>CREAR NUEVA INFORMACION SEGURIDAD</strong></h1>
+
         <form action="/informacion/crear" method="POST">
             <div class="form-group">
-                <label for="titulo" class="button-like">Título:</label>
+                <label for="titulo" class="button-like"><strong>Título:</strong></label>
                 <input type="text" class="form-control" id="titulo" name="titulo" required>
 
             </div>
             <div class="form-group">
 
-                <label for="contenido" class="button-like">Contenido:</label>
+                <label for="contenido" class="button-like"><strong>Contenido:</strong></label>
                 <textarea class="form-control" id="contenido" name="contenido" rows="4" required></textarea>
             </div>
             <div class="form-group">
 
-                <label for="multimedia" class="button-like">Multimedia:</label>
+                <label for="multimedia" class="button-like"><strong>Multimedia:</strong></label>
                 <input type="text" class="form-control" id="multimedia" name="multimedia">
             </div>
-            <button type="submit" class="btn btn-primary">Crear Información de Seguridad</button>
+            <button type="submit" class="btn btn-primary"><strong>Crear Información de Seguridad</strong></button>
         </form>
 
         <h1 class="mt-5"></h1>
@@ -42,9 +43,9 @@
                     <h2 class="card-title">{{this.dataValues.titulo}}</h2>
                     <p class="card-text"><strong>Contenido:</strong> {{this.dataValues.contenido}}</p>
                     <p class="card-text"><strong>Multimedia:</strong> {{this.dataValues.multimedia}}</p>
-                    <a href="/informacion/{{ this.dataValues.id }}/editar" class="btn btn-info">Editar Información</a>
+                    <a href="/informacion/{{ this.dataValues.id }}/editar" class="btn btn-info"><strong>Editar Información</strong></a>
                     <form action="/informacion/eliminar/{{ this.dataValues.id }}" method="DELETE" class="d-inline">
-                        <button type="submit" class="btn btn-danger">Eliminar Información</button>
+                        <button type="submit" class="btn btn-danger"><strong>Eliminar Información</strong></button>
                     </form>
                 </div>
             </div>
@@ -59,8 +60,15 @@
 
 </html>
 <style>
-    .card {
-        background: linear-gradient(to right, #94B8D0, #ffffff);/* Color de fondo de las tarjetas */
+    /* Contenedor para las tarjetas */
+    .card-container {
+        display: flex; /* Utiliza flexbox */
+        flex-wrap: wrap; /* Envuelve hacia abajo cuando no hay espacio en la fila */
+        justify-content: space-around; /* Espacio entre las tarjetas */
+        
+    }
+     .card {
+        background: linear-gradient(to right, #e5e7e9, #ffffff);/* Color de fondo de las tarjetas */
         border: 1px solid #ddd;
         border-radius: 8px;
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
@@ -69,15 +77,8 @@
         border: 1px solid #ccc;/* Borde de la tarjeta */
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);/* Sombra de la tarjeta */
         transition: transform 0.3s ease-in-out; /* Transición de transformación */
+         font-size: 15px;
 
-    }
-
-
-    /* Contenedor para las tarjetas */
-    .card-container {
-        display: flex; /* Utiliza flexbox */
-        flex-wrap: wrap; /* Envuelve hacia abajo cuando no hay espacio en la fila */
-        justify-content: space-around; /* Espacio entre las tarjetas */
     }
 
     .card:hover {
@@ -91,9 +92,9 @@
         display: inline-block;
         padding: 5px 50px;
         margin-bottom: 15px;
-        background: linear-gradient(to right, #97c1a9, #ffffff);/* Color de fondo del botón */
+        background:#8FC9CB;/* Color de fondo del botón */
         color: #000000; /* Color del texto del botón */
-        border: 1px solid #B7E0D2;/* Borde del botón */
+        border: 1px solid #b7cfb7;/* Borde del botón */
         border-radius: 5px;/* Bordes redondeados */
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);/* Sombra */
         cursor: pointer;/* Cambia el cursor al pasar sobre el botón */
@@ -130,13 +131,12 @@
     }
 
     h1.mb-4 {
-        color: #333; /* Color del texto */
-        font-size: 20px; /* Tamaño de la fuente */
+        color: #8FC9CB; /* Color del texto */
+        font-size: 30px; /* Tamaño de la fuente */
         text-align: center; /* Alineación del texto */
         margin-bottom: 20px; /* Espaciado inferior */
         padding-bottom: 10px; /* Espaciado inferior adicional */
         transition: color 1.5s ease, transform 1.8s ease; /* Transición de color y transformación */
-        background: #8FC9CB;
         border-radius: 15px;
         padding: 10px;
         width: 80%;
@@ -145,7 +145,7 @@
         left: 100px;
     }
     h1.mb-4:hover {
-        color: #fff;/* Cambia el color al pasar el mouse sobre el elemento */
+        color: #8FC9CB;/* Cambia el color al pasar el mouse sobre el elemento */
         transform: scale(1.1);/* Agranda el texto al pasar el mouse sobre el elemento */
     }
 
@@ -157,9 +157,11 @@
 
 
     body {
-        background-color: #97c1a9;/* Color de fondo de pantalla */
+        background-color: #e6f1eb;/* Color de fondo de pantalla */
         margin: 0;
         padding: 0;
+         font-family: Arial, sans-serif; /Estilo de letra/
+    color: #333;
     }
 
     .container {
@@ -184,20 +186,20 @@
     }
 
     .btn-info {
-        background-color: #17a2b8;/* Color del botón de información */
+        background-color: #8FC9CB;/* Color del botón de información */
         border: none;
     }
 
     .btn-info:hover {
-        background-color: #117a8b; /* Color al pasar el ratón sobre el botón de información */
+        background-color: #D4F0F1; /* Color al pasar el ratón sobre el botón de información */
     }
 
     .btn-danger {
-        background-color: #dc3545;/* Color del botón de peligro */
+        background-color: #b7cfb7;/* Color del botón de peligro */
         border: none;
     }
 
     .btn-danger:hover {
-        background-color: #ac2925; /* Color al pasar el ratón sobre el botón de peligro */
+        background-color: #D6EADF; /* Color al pasar el ratón sobre el botón de peligro */
     }
 </style>
